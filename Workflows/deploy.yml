@@ -1,0 +1,28 @@
+name: Deploy Workflow
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs: 
+first_job:
+   steps:
+     - name: Hola Mundo
+     runs-on: ubuntu-latest
+       run: echo "Hola Mundo desde el primer job"
+
+
+     
+second_job:
+   needs: first_job
+   steps:
+     - name: Hola Mundo desde el segundo job
+     if: success()
+       run: echo "Hola Mundo desde el segundo job"  
+   
+   steps:
+     - name: Hola Mundo desde el segundo job
+       run: echo "Hola Mundo desde el segundo job"
